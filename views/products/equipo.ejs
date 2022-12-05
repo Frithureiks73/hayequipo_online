@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+    <header> 
+        <div class="container-fluid">
+            <div>
+                <a href="/"><img class="logo"src="/img/logo.png" alt="logo"></a>
+            </div>
+            <%- include('../partials/navbar') %>
+        </div>    
+    </header>
+    <section class="registro-cuerpo" id="registro-fondo">       
+        <div class="registro-formulario">
+            <form action="/products/crear-equipo" method="POST">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label"><%=equipo.nombre_equipo %> </label>
+                </div>
+                <div class="mb-3">
+                    <img src="/img/img-equipos/<%= equipo.img_equipo %>" class="card-img-top" alt="Foto Equipo">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 1: </label>
+                    <label for="formGroupExampleInput2" class="form-label"><%=equipo.jugador1 %></label>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 2: </label>
+                    <label for="formGroupExampleInput2" class="form-label"><%=equipo.jugador2 %></label>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 3: </label>
+                    <label for="formGroupExampleInput2" class="form-label"><%= equipo.jugador3 %></label>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 4: </label>
+                    <label for="formGroupExampleInput2" class="form-label"><%= equipo.jugador4 %></label>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 5: </label>
+                    <label for="formGroupExampleInput2" class="form-label"><%= equipo.jugador5 %></label>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 6: </label>
+                    <label for="formGroupExampleInput2" class="form-label"><%= equipo.jugador6 %></label>
+                </div>
+                <div class="mb-3">
+                    <label for="restriccionesSexo" name="restriccionesSexo" class="form-label">Juega Contra: <%= equipo.restriccionesSexo%> </label><br>                 
+                </div>
+            
+                <div class="mb-3">
+                    <label for="restriccionEdad" class="form-label">Restricción de Edad: <%= equipo.restriccionEdad %> </label><br>
+                </div>               
+                <a href="/products/editar-equipo/<%= equipo.id %>" class="btn btn-primary">EDITAR</a>
+            </form>            
+            <form action="/products/delete/<%=equipo.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-primary">ELIMINAR</button>
+            </form>
+        </div> 
+    </section>
+    <%- include('../partials/footer') %>   
+</body>
+</html>

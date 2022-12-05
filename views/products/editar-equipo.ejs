@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+    <header> 
+        <div class="container-fluid">
+            <div>
+                <a href="/"><img class="logo"src="/img/logo.png" alt="logo"></a>
+            </div>
+            <%- include('../partials/navbar') %>            
+        </div>    
+    </header>
+    <section class="registro-cuerpo" id="registro-fondo">       
+        <div class="registro-formulario">
+            <form action="/products/editar-equipo/<%=equipo.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Nombre del Equipo:</label>
+                    <input type="text" class="form-control" name="nombreEquipo" id="formGroupExampleInput" placeholder="Equipo A" value="<%=equipo.nombreEquipo %>">
+                </div>
+                <div class="mb-3">
+                    <label for="fotoEquipo" class="form-label">Foto del Equipo:</label>
+                    <input type="file" class="form-control" name="imgEquipo" id="fotoEquipo" accept=".jpg, .png">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 1:</label>
+                    <input type="text" class="form-control" name="jugador1" minlength="4" id="formGroupExampleInput2" placeholder="@usuario" value="<%=equipo.jugador1 %>">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 2:</label>
+                    <input type="text" class="form-control" name="jugador2" minlength="4" id="formGroupExampleInput2" placeholder="@usuario" value="<%=equipo.jugador2 %>">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 3:</label>
+                    <input type="text" class="form-control" name="jugador3" minlength="4" id="formGroupExampleInput2" placeholder="@usuario" value="<%= equipo.jugador3 %>">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 4:</label>
+                    <input type="text" class="form-control" name="jugador4" minlength="4" id="formGroupExampleInput2" placeholder="@usuario" value="<%= equipo.jugador4 %>">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 5:</label>
+                    <input type="text" class="form-control" name="jugador5" minlength="4" id="formGroupExampleInput2" placeholder="@usuario" value="<%= equipo.jugador5 %>">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Jugador 6:</label>
+                    <input type="text" class="form-control" name="jugador6" minlength="4" id="formGroupExampleInput2" placeholder="@usuario" value="<%= equipo.jugador6 %>">
+                </div>
+                <div class="mb-3">
+                    <label for="restriccionesSexo" class="form-label">Juega Contra:</label><br>
+                    <% if (equipo.restriccionesSexo == "Mixto"){ %>
+                    <select id="restriccionEdad" name="restriccionesSexo">
+                        <option value="Mixto" selected> Mixto </option>
+                        <option value="Solo Mujeres"> Solo Mujeres</option>
+                        <option value="Solo Hombres"> Solo Hombres</option>
+                    </select>
+                    <% } else if(equipo.restriccionesSexo == "Solo Mujeres"){%>
+                        <select id="restriccionEdad" name="restriccionesSexo">
+                            <option value="Mixto"> Mixto </option>
+                            <option value="Solo Mujeres" selected> Solo Mujeres</option>
+                            <option value="Solo Hombres"> Solo Hombres</option>
+                        </select>
+                    <% } else {%>
+                        <select id="restriccionEdad" name="restriccionesSexo">
+                            <option value="Mixto"> Mixto </option>
+                            <option value="Solo Mujeres"> Solo Mujeres</option>
+                            <option value="Solo Hombres" selected> Solo Hombres</option>
+                        </select>
+                        <% } %> 
+                </div>            
+                <div class="mb-3">
+                    <label for="restriccionEdad" class="form-label">Restricción de Edad:</label>
+                    <% if (equipo.restriccionEdad == "Sin restricción"){ %>
+                    <select id="restriccionEdad" name="restriccionEdad">
+                        <option value="Sin restricción" selected> Sin restricción</option>
+                        <option value="Menores de 30 años"> Menores de 30 años</option>                        
+                        <option value="Menores de 40 años"> Menores de 40 años</option>
+                        <option value="Mayores de 40 años"> Mayores de 40 años</option>
+                    </select>
+                    <% } else if(equipo.restriccionEdad == "Menores de 30 años"){%>
+                        <select id="restriccionEdad" name="restriccionEdad">
+                            <option value="Sin restricción" > Sin restricción</option>
+                            <option value="Menores de 30 años" selected> Menores de 30 años</option>                        
+                            <option value="Menores de 40 años"> Menores de 40 años</option>
+                            <option value="Mayores de 40 años"> Mayores de 40 años</option>
+                        </select>
+                    <% } else if(equipo.restriccionEdad == "Menores de 40 años"){%>
+                        <select id="restriccionEdad" name="restriccionEdad">
+                            <option value="Sin restricción" > Sin restricción</option>
+                            <option value="Menores de 30 años"> Menores de 30 años</option>                        
+                            <option value="Menores de 40 años" selected> Menores de 40 años</option>
+                            <option value="Mayores de 40 años"> Mayores de 40 años</option>
+                        </select>
+                    <% } else {%>
+                        <select id="restriccionEdad" name="restriccionEdad">
+                            <option value="Sin restricción" > Sin restricción</option>
+                            <option value="Menores de 30 años"> Menores de 30 años</option>                        
+                            <option value="Menores de 40 años"> Menores de 40 años</option>
+                            <option value="Mayores de 40 años" selected> Mayores de 40 años</option>
+                        </select>    
+                        <% } %>     
+                    </div>
+                <button type="submit" class="btn btn-primary">GUARDAR</button>
+            </form>            
+        </div> 
+    </section>
+    <%- include('../partials/footer') %>   
+</body>
+</html>
